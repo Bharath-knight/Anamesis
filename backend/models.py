@@ -11,16 +11,16 @@ class DosePeriod(BaseModel):
     end_date: Optional[str]      # YYYY-MM-DD or null if active
     dose_mg: float
     dose_label: str              # e.g. "50mg"
-    frequency: str               # e.g. "Once daily"
-    route_label: str             # e.g. "Oral tablet"
-    change_reason: Optional[str] # null for first dose entry
+    frequency: Optional[str] = None
+    route_label: Optional[str] = None
+    change_reason: Optional[str] = None
 
 class MedicationRecord(BaseModel):
     id: str                      # slug e.g. "med-sertraline"
     name: str
-    brand_name: Optional[str]
+    brand_name: Optional[str] = None
     drug_class: str              # e.g. SSRI, SNRI, NDRI
-    indication: str
+    indication: Optional[str] = None
     status: MedicationStatus
     doses: List[DosePeriod]
 
